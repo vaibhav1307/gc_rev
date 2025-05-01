@@ -24,201 +24,229 @@
       scroll-snap-type: y mandatory;
       overflow-x: hidden;
       font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      padding-top: 80px;
     }
     .panel {
       scroll-snap-align: start;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       padding: 2rem;
     }
-    /* Hero */
-    .hero-section {
-      background: #fff;
-      text-align: center;
+    /* Header */
+    .navbar {
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: saturate(180%) blur(10px);
+      transition: padding .3s;
     }
-    .hero-section .logo {
+    .navbar.scrolled {
+      padding: .5rem 1rem !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    }
+    .navbar-brand img { height: 40px; }
+    .nav-link {
+      color: var(--primary-blue) !important;
+      margin: 0 .75rem;
+      font-weight: 600;
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--accent-yellow);
+      transition: width .3s;
       position: absolute;
-      top: 1rem; left: 1rem;
-      height: 50px;
+      bottom: -4px;
+      left: 0;
     }
-    .hero-section h1 {
-      font-size: 3rem;
-      color: var(--primary-blue);
-      margin-bottom: 1rem;
-    }
-    .hero-section .subtitle {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-    }
-    .hero-section .cta {
+    .nav-link:hover::after { width: 100%; }
+    /* Hero */
+    #hero { background: #fff; text-align: center; }
+    #hero .logo { position: absolute; top: 1rem; left: 1rem; height: 50px; }
+    #hero h1 { font-size: 3rem; color: var(--primary-blue); margin-bottom: 1rem; }
+    #hero .subtitle { font-size: 1.25rem; margin-bottom: 2rem; }
+    #hero .cta {
       background: var(--accent-yellow);
       border: none;
       border-radius: .5rem;
       padding: .75rem 1.5rem;
+      font-weight: 600;
     }
     /* About */
-    .about-section {
-      background: var(--bg-light);
-    }
-    .about-section .about-content {
+    #about-hero { background: var(--bg-light); }
+    .about-content {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      max-width: 1200px;
       gap: 2rem;
-      max-width: 1200px; width: 100%;
     }
-    .about-section .text, .about-section .image {
-      flex: 1 1 300px;
-    }
-    .about-section h2 {
-      font-size: 2.5rem;
-      color: var(--primary-blue);
-      margin-bottom: 1rem;
-    }
-    .about-section p {
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-    .about-section .cta.secondary {
+    #about-hero h2 { font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 1rem; }
+    #about-hero p { line-height: 1.6; margin-bottom: 1.5rem; }
+    #about-hero .cta.secondary {
       background: transparent;
       border: 2px solid var(--primary-blue);
       color: var(--primary-blue);
       border-radius: .5rem;
       padding: .5rem 1.25rem;
     }
-    .about-section img {
-      width: 100%; height: auto;
-      max-width: 500px;
-    }
     /* Statistics */
-    .statistic-section {
+    #statistic {
       background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
       color: #fff;
+      text-align: center;
+      padding: 4rem 0;
     }
-    .statistic-section .display-4 { font-size: 3rem; }
+    #statistic .display-4 { font-size: 3rem; font-weight: 700; }
     /* Key Services */
-    .key-services-section { background: #fff; }
-    .key-services-section p { font-size: 1.1rem; }
+    #key-services { background: #fff; padding: 4rem 2rem; }
+    #key-services p { margin-bottom: 1rem; }
     .info-card {
       background: var(--primary-blue);
       color: #fff;
       border-radius: 12px;
       padding: 1.5rem;
       text-align: center;
+      font-weight: 600;
     }
     /* Our Services */
-    .our-services-section { background: var(--bg-lighter); padding: 4rem 2rem; }
-    .main-title { font-size: 2.5rem; margin-bottom: 2rem; color: var(--primary-blue); text-align: center; }
+    #our-services { background: var(--bg-lighter); padding: 4rem 2rem; }
+    .main-title { font-size: 2.5rem; color: var(--primary-blue); text-align: center; margin-bottom: 2rem; }
     .custom-card {
       background: #111; color: #fff;
       border: 1px solid #007bff; border-radius: 20px;
-      overflow: hidden; margin-bottom: 2rem;
-      position: relative; padding-top: 2rem;
+      overflow: hidden; position: relative; padding-top: 2rem;
+      text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,.05);
     }
-    .custom-card .card-header {
-      position: absolute; top: 0; left: 50%;
+    .card-header {
+      position: absolute;
+      top: 0; left: 50%;
       transform: translate(-50%, -50%);
-      background: #007bff; color: #fff;
-      padding: .25rem .75rem;
-      border-radius: 50px;
+      background: var(--primary-blue); color: #fff;
+      padding: .25rem .75rem; border-radius: 50px;
+      font-weight: 600;
     }
-    .custom-card img { max-height: 200px; }
-    /* Service Benefits */
-    .benefits-section { background: #fff; padding: 4rem 2rem; }
-    .benefits-section .info-card {
+    /* Service Benefits (within Our Services) */
+    #our-services .info-card {
       background: #00A0E3; color: #fff;
       border-radius: 12px; padding: 1rem; margin-bottom: 1.5rem;
       position: relative; padding-left: 3rem;
     }
-    .benefits-section .icon-circle {
+    #our-services .icon-circle {
       position: absolute; top: 50%; left: 0;
       transform: translateY(-50%);
       background: #083d5d; width: 50px; height: 50px;
       display: flex; align-items: center; justify-content: center;
       border-radius: 50%;
     }
-    .benefits-section .icon-img { width: 28px; height: 28px; }
+    #our-services .icon-img { width: 28px; height: 28px; }
     /* Testimonials */
-    .testimonial-section {
+    #testimonials {
       background: var(--bg-light); padding: 4rem 2rem; text-align: center;
     }
-    .testimonial-section h2 { font-size: 2.5rem; margin-bottom: 2rem; color: var(--primary-blue); }
-    .testimonial-section .testimonial p { font-style: italic; margin-bottom: 1rem; }
+    #testimonials h2 { font-size: 2.5rem; margin-bottom: 2rem; color: var(--primary-blue); }
+    .testimonial { max-width: 600px; margin: 0 auto 2rem; font-style: italic; }
     .client-logos img { margin: 0 .5rem; height: 50px; }
     /* Clientle */
-    .clientle-section { background: #fff; padding: 4rem 2rem; text-align: center; }
-    .clientle-section h2 { font-size: 2rem; color: var(--primary-blue); margin-bottom: 2rem; }
+    #clientle { background: #fff; padding: 4rem 2rem; text-align: center; }
+    #clientle h2 { font-size: 2rem; color: var(--primary-blue); margin-bottom: 2rem; }
     /* UPI Switch */
-    .upi-switch-section { background: #fff; padding: 4rem 2rem; }
-    .upi-switch-section .media-gif { max-width: 100%; height: auto; }
-    .upi-switch-section .bottom-right-icon {
+    #upi-switch { background: #fff; padding: 4rem 2rem; }
+    .media-gif { max-width: 100%; height: auto; }
+    .bottom-right-icon {
       position: absolute; bottom: 1rem; right: 1rem; width: 50px;
     }
     /* Contact */
-    .contact-section {
-      background: var(--dark-blue); color: #fff; padding: 4rem 2rem;
-    }
-    .contact-section h1 { color: #fff; margin-bottom: 2rem; }
-    .contact-section .form-control {
-      border-radius: .5rem; margin-bottom: 1rem;
-    }
+    #contact { background: var(--dark-blue); color: #fff; padding: 4rem 2rem; }
+    #contact h2 { font-size: 2.5rem; margin-bottom: 2rem; font-weight: 700; }
+    .custom-input { border-radius: .5rem; margin-bottom: 1rem; }
+    .btn-submit { background: var(--accent-yellow); border: none; color: #000; font-weight: 600; }
     /* Footer */
-    footer {
-      background: #fff; padding: 2rem; text-align: center;
-    }
+    footer { background: #fff; padding: 2rem; text-align: center; }
     @media (max-width:576px) {
-      .hero-section h1 { font-size: 2.25rem; }
-      .about-section h2 { font-size: 2rem; }
-      .statistic-section .display-4 { font-size: 2.5rem; }
-      .custom-card { padding-top: 3rem; }
+      #hero h1 { font-size: 2.25rem; }
+      #about-hero h2 { font-size: 2rem; }
+      #statistic .display-4 { font-size: 2.5rem; }
       .main-title { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Header -->
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top py-3">
+    <div class="container">
+      <a class="navbar-brand" href="#hero"><img src="assets/logo.svg" alt="GC Logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about-hero">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#statistic">Stats</a></li>
+          <li class="nav-item"><a class="nav-link" href="#key-services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#our-services">Our Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#clientle">Clients</a></li>
+          <li class="nav-item"><a class="nav-link" href="#upi-switch">Demo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <!-- Hero -->
   <section id="hero" class="panel hero-section">
-    <img src="assets/gc-logo.png" alt="GC Logo" class="logo">
-    <h1>Simplifying Governance for Communities</h1>
-    <p class="subtitle">Empower your citizens with transparent, digital-first solutions.</p>
-    <button class="cta btn">Request a Demo</button>
+    <h1>Simplifying Governance for Communities</h1>            <!-- :contentReference[oaicite:1]{index=1} -->
+    <p class="subtitle">Empower your citizens with transparent, digital-first solutions.</p> <!-- :contentReference[oaicite:2]{index=2} -->
+    <button class="cta">Request a Demo</button>
   </section>
 
   <!-- About -->
-  <section id="about" class="panel about-section container">
-    <div class="about-content mx-auto">
+  <section id="about-hero" class="panel about-section">
+    <div class="about-content">
       <div class="text">
         <h2>Who We Are</h2>
-        <p>GC is a next-gen civic platform that brings local governments and citizens closer through intuitive digital tools. Our mission is to make governance transparent, participatory, and efficient.</p>
-        <button class="cta secondary btn">Learn More</button>
+        <p>GC is a next-gen civic platform that brings local governments and citizens closer through intuitive digital tools. Our mission is to make governance transparent, participatory, and efficient.</p> <!-- :contentReference[oaicite:3]{index=3} -->
+        <button class="cta secondary">Learn More</button>
       </div>
-      <div class="image"><img src="assets/about-illustration.png" alt="About illustration"></div>
+      <div class="image">
+        <img src="assets/about-illustration.png" alt="About illustration">
+      </div>
     </div>
   </section>
 
   <!-- Statistics -->
-  <section id="statistic" class="panel statistic-section">
+  <section id="statistic" class="panel">
     <div class="container text-center">
       <div class="row">
         <div class="col">
-          <h1 class="display-4 fw-bold text-info">100+</h1>
-          <p class="fw-bold">People Trust GenCash</p>
+          <h1 class="display-4" data-target="500+">500+</h1>
+          <p>Communities Supported</p>   <!-- :contentReference[oaicite:4]{index=4} -->
         </div>
         <div class="col">
-          <h1 class="display-4 fw-bold text-info">100+</h1>
-          <p class="fw-bold">Average 5-Star Reviews</p>
+          <h1 class="display-4" data-target="1M+">1M+</h1>
+          <p>Citizens Impacted</p>       <!-- :contentReference[oaicite:5]{index=5} -->
+        </div>
+        <div class="col">
+          <h1 class="display-4" data-target="50+">50+</h1>
+          <p>Cities Integrated</p>       <!-- :contentReference[oaicite:6]{index=6} -->
         </div>
       </div>
     </div>
   </section>
 
   <!-- Key Services -->
-  <section id="key-services" class="panel key-services-section">
+  <section id="key-services" class="panel">
     <div class="container">
-      <p>At GenCash, we redefine the way India transacts, providing comprehensive financial services for the inclusive and sustainable growth of individuals, SMEs, and enterprises nationwide.</p>
+      <p>At GenCash, we redefine the way India transacts, providing comprehensive financial services for the inclusive and sustainable growth of individuals, SMEs, and enterprises nationwide.</p> <!-- :contentReference[oaicite:7]{index=7} -->
       <div class="row gy-3">
         <div class="col-md-4"><div class="info-card">Benefits to Co-operative Banks</div></div>
         <div class="col-md-4"><div class="info-card">Point of Sale (POS) Terminals</div></div>
@@ -228,44 +256,39 @@
         <div class="col-md-4"><div class="info-card">Payout Connected Banking</div></div>
         <div class="col-md-4"><div class="info-card">Soundbox Machines</div></div>
         <div class="col-md-4"><div class="info-card">UPI QR solutions</div></div>
-      </div>
+      </div> <!-- :contentReference[oaicite:8]{index=8} -->
     </div>
   </section>
 
   <!-- Our Services -->
-  <section id="our-services" class="panel our-services-section">
+  <section id="our-services" class="panel">
     <div class="container">
-      <h2 class="main-title">Our Services</h2>
+      <h2 class="main-title">Our Services</h2> <!-- :contentReference[oaicite:9]{index=9} -->
       <div class="row justify-content-center">
-        <!-- Prepaid Cards -->
         <div class="col-md-4 mb-4">
           <div class="custom-card">
             <div class="card-header">Prepaid Cards</div>
             <img src="assets/our-services/prepaid_cards.png" alt="Prepaid Cards" class="img-fluid">
           </div>
         </div>
-        <!-- API For Developers -->
         <div class="col-md-4 mb-4">
           <div class="custom-card">
             <div class="card-header">API For Developers</div>
             <img src="assets/api_for_developers.png" alt="API For Developers" class="img-fluid">
           </div>
         </div>
-        <!-- Merchant Platform -->
         <div class="col-md-4 mb-4">
           <div class="custom-card">
-            <div class="card-header">Merchant Acquisition Platform for Bank</div>
+            <div class="card-header">Merchant Acquisition Platform</div>
             <img src="assets/our-services/merchant_aquisition_platform.png" alt="Merchant Platform" class="img-fluid">
           </div>
         </div>
-        <!-- Payout Links -->
         <div class="col-md-4 mb-4">
           <div class="custom-card">
             <div class="card-header">Payout Links</div>
             <img src="assets/our-services/gencash_payout_links.png" alt="Payout Links" class="img-fluid">
           </div>
         </div>
-        <!-- Payment Collection -->
         <div class="col-md-4 mb-4">
           <div class="custom-card">
             <div class="card-header">Payment Collection</div>
@@ -276,26 +299,26 @@
 
       <!-- Service Benefits -->
       <h2 class="main-title mt-5"><span style="color:#00A0E3">Service Benefits</span> – Comprehensive Suite</h2>
-      <div class="row gy-4 justify-content-center">
+      <div class="row justify-content-center gy-4">
         <div class="col-md-4 position-relative">
           <div class="icon-circle"><img src="assets/benefits/increasedefficiency.svg" class="icon-img" alt=""></div>
           <div class="info-card">
             <h5>Increased Efficiency</h5>
-            <p>Enhance efficiency with FiatPe. Simplify your workflow with our streamlined solutions.</p>
+            <p>Enhance efficiency with GenCash’s streamlined solutions.</p>
           </div>
         </div>
         <div class="col-md-4 position-relative">
           <div class="icon-circle"><img src="assets/benefits/reducemanualwork.svg" class="icon-img" alt=""></div>
           <div class="info-card">
             <h5>Reduced Manual Work</h5>
-            <p>Cut down on manual work with FiatPe’s automated solutions. Streamline your operations effortlessly.</p>
+            <p>Cut down on manual work with GenCash’s automated solutions.</p>
           </div>
         </div>
         <div class="col-md-4 position-relative">
           <div class="icon-circle"><img src="assets/benefits/improvecashflowmanagement.svg" class="icon-img" alt=""></div>
           <div class="info-card">
             <h5>Improved Cash Flow Management</h5>
-            <p>Optimize cash flow management with FiatPe. Empowering businesses with smarter financial solutions.</p>
+            <p>Optimize cash flow management with our smarter financial platform.</p>
           </div>
         </div>
       </div>
@@ -303,37 +326,37 @@
   </section>
 
   <!-- Testimonials -->
-  <section id="testimonials" class="panel testimonial-section">
+  <section id="testimonials" class="panel">
     <div class="container">
-      <h2>What Our Clients Say</h2>
-      <div class="testimonial mx-auto w-75">
+      <h2>What Our Clients Say</h2> <!-- :contentReference[oaicite:10]{index=10} -->
+      <div class="testimonial">
         <p>“GC transformed how we engage with our citizens—our participation rates doubled!”</p>
         <span>— City Manager, Springfield</span>
       </div>
       <div class="client-logos">
-        <img src="assets/logo1.png" alt="" />
-        <img src="assets/logo2.png" alt="" />
-        <img src="assets/logo3.png" alt="" />
+        <img src="assets/logo1.png" alt="Client 1">
+        <img src="assets/logo2.png" alt="Client 2">
+        <img src="assets/logo3.png" alt="Client 3">
       </div>
     </div>
   </section>
 
   <!-- Clientle -->
-  <section id="clientle" class="panel clientle-section">
-    <div class="container">
-      <h2>Clientle</h2>
-      <div class="row text-center justify-content-center">
-        <div class="col-6 col-md-2 mb-4"><img src="assets/clientle/IDFC-logo-website.svg" class="img-fluid"></div>
-        <div class="col-6 col-md-2 mb-4"><img src="assets/clientle/Kotak_Mahindra_Group_logo.svg" class="img-fluid"></div>
-        <div class="col-6 col-md-2 mb-4"><img src="assets/clientle/Suryodaylogo_1_1_a157d376fe.webp" class="img-fluid"></div>
-        <div class="col-6 col-md-2 mb-4"><img src="assets/clientle/Sab-Paisa-small.png" class="img-fluid"></div>
-        <div class="col-6 col-md-2 mb-4"><img src="assets/clientle/phonepe_logo.svg" class="img-fluid"></div>
+  <section id="clientle" class="panel">
+    <div class="container text-center">
+      <h2>Clientle</h2> <!-- :contentReference[oaicite:11]{index=11} -->
+      <div class="row justify-content-center g-4">
+        <div class="col-6 col-md-2"><img src="assets/clientle/IDFC-logo-website.svg" class="img-fluid"></div>
+        <div class="col-6 col-md-2"><img src="assets/clientle/Kotak_Mahindra_Group_logo.svg" class="img-fluid"></div>
+        <div class="col-6 col-md-2"><img src="assets/clientle/Suryodaylogo_1_1_a157d376fe.webp" class="img-fluid"></div>
+        <div class="col-6 col-md-2"><img src="assets/clientle/Sab-Paisa-small.png" class="img-fluid"></div>
+        <div class="col-6 col-md-2"><img src="assets/clientle/phonepe_logo.svg" class="img-fluid"></div>
       </div>
     </div>
   </section>
 
   <!-- UPI Switch -->
-  <section id="upi-switch" class="panel upi-switch-section">
+  <section id="upi-switch" class="panel">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-4 text-center"><img src="assets/test.png" class="media-gif"></div>
@@ -346,24 +369,24 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="panel contact-section">
+  <section id="contact" class="panel">
     <div class="container">
-      <div class="row">
+      <h2>Get in Touch</h2> <!-- :contentReference[oaicite:12]{index=12} -->
+      <div class="row g-4">
         <div class="col-md-8">
-          <h1>Get in Touch</h1>
           <form>
-            <input type="text" class="form-control" placeholder="Full Name*" required>
-            <input type="text" class="form-control" placeholder="Company Name*" required>
+            <input type="text" class="form-control custom-input" placeholder="Full Name*" required>
+            <input type="text" class="form-control custom-input" placeholder="Company Name*" required>
             <div class="d-flex gap-2">
-              <input type="email" class="form-control" placeholder="Email*" required>
-              <input type="text" class="form-control" placeholder="Mobile*" required>
+              <input type="email" class="form-control custom-input" placeholder="Email*" required>
+              <input type="text" class="form-control custom-input" placeholder="Mobile*" required>
             </div>
-            <textarea class="form-control" rows="4" placeholder="Query*" required></textarea>
-            <button type="submit" class="btn btn-warning">Submit</button>
+            <textarea class="form-control custom-input" rows="4" placeholder="Query*" required></textarea>
+            <button type="submit" class="btn-submit btn">Submit</button>
           </form>
         </div>
         <div class="col-md-4 text-center">
-          <img src="assets/get_in_touch.png" class="img-fluid" alt="">
+          <img src="assets/get_in_touch.png" class="img-fluid" alt="Mailbox Image">
         </div>
       </div>
     </div>
@@ -385,74 +408,6 @@
   <!-- GSAP + ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-    // Hero Animations
-    gsap.from("#hero h1", { y:50, opacity:0, duration:1, ease:"power2.out" });
-    gsap.from("#hero .subtitle", { y:30, opacity:0, duration:1, delay:0.3 });
-    gsap.from("#hero .cta", { scale:0.8, opacity:0, duration:1, delay:0.6 });
-    // About
-    gsap.from(".about-section .text", {
-      scrollTrigger:{ trigger:"#about", start:"top 80%" },
-      x:-100, opacity:0, duration:1
-    });
-    gsap.from(".about-section .image", {
-      scrollTrigger:{ trigger:"#about", start:"top 80%" },
-      x:100, opacity:0, duration:1
-    });
-    // Statistics count-up
-    document.querySelectorAll("#statistic .display-4").forEach(el => {
-      gsap.fromTo(el, { innerText:0 }, {
-        innerText:+el.textContent,
-        duration:2,
-        scrollTrigger:{ trigger:"#statistic", start:"top 80%" },
-        snap:{ innerText:1 },
-        onUpdate:()=> el.textContent = Math.ceil(el.innerText)
-      });
-    });
-    // Key Services cards
-    gsap.from("#key-services .info-card", {
-      scrollTrigger:{ trigger:"#key-services", start:"top 80%" },
-      scale:0.8, opacity:0, stagger:0.15, duration:1
-    });
-    // Our Services cards
-    gsap.from("#our-services .custom-card", {
-      scrollTrigger:{ trigger:"#our-services", start:"top 80%" },
-      scale:0.8, opacity:0, stagger:0.2, duration:1
-    });
-    // Service Benefits
-    gsap.from(".benefits-section .info-card", {
-      scrollTrigger:{ trigger:"#our-services", start:"top 60%" },
-      x:100, opacity:0, stagger:0.2, duration:1
-    });
-    // Testimonials
-    gsap.from(".testimonial-section .testimonial", {
-      scrollTrigger:{ trigger:"#testimonials", start:"top 80%" },
-      scale:0.9, opacity:0, duration:1
-    });
-    gsap.from(".client-logos img", {
-      scrollTrigger:{ trigger:"#testimonials", start:"top 80%" },
-      x:-50, opacity:0, stagger:0.2, duration:1
-    });
-    // Clientle logos
-    gsap.from(".clientle-section img", {
-      scrollTrigger:{ trigger:"#clientle", start:"top 80%" },
-      scale:0.8, opacity:0, stagger:0.2, duration:1
-    });
-    // UPI Switch
-    gsap.from("#upi-switch .media-gif", {
-      scrollTrigger:{ trigger:"#upi-switch", start:"top 80%" },
-      scale:0.8, opacity:0, duration:1
-    });
-    gsap.from("#upi-switch .bottom-right-icon", {
-      scrollTrigger:{ trigger:"#upi-switch", start:"top 80%" },
-      y:50, opacity:0, duration:1
-    });
-    // Contact Form
-    gsap.from("#contact input, #contact textarea, #contact button, #contact h1", {
-      scrollTrigger:{ trigger:"#contact", start:"top 80%" },
-      y:30, opacity:0, stagger:0.2, duration:1
-    });
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>
